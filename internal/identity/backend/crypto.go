@@ -86,23 +86,23 @@ func verifyPassword(password string, encodedHash string) (bool, error) {
 		case "m":
 			m64, err := strconv.ParseUint(value, 10, 32)
 			if err != nil {
-				return false, errors.New("failed to parse memory")
+				return false, errors.New("failed to parse m")
 			}
 			m = uint32(m64)
 		case "t":
 			t64, err := strconv.ParseUint(value, 10, 32)
 			if err != nil {
-				return false, err
+				return false, errors.New("failed to parse t")
 			}
 			t = uint32(t64)
 		case "p":
 			p64, err := strconv.ParseUint(value, 10, 8)
 			if err != nil {
-				return false, err
+				return false, errors.New("failed to parse p")
 			}
 			p = uint8(p64)
 		default:
-			return false, errors.New("unknown parameter key")
+			return false, errors.New("unknown parameter")
 		}
 	}
 
